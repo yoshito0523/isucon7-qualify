@@ -23,6 +23,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/middleware"
+	"github.com/sevenNt/echo-pprof"
 )
 
 const (
@@ -722,6 +723,8 @@ func tRange(a, b int64) []int64 {
 
 func main() {
 	e := echo.New()
+	echopprof.Wrap(e)
+
 	funcs := template.FuncMap{
 		"add":    tAdd,
 		"xrange": tRange,
